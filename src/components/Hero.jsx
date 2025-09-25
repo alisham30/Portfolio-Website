@@ -119,33 +119,35 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           {/* Main Greeting */}
-          <BlurText
-            text="Alisha Mathias Portfolio"
-            delay={300}
-            animateBy="words"
-            direction="top"
-            stepDuration={0.6}
-            onAnimationComplete={handleAnimationComplete}
-            className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-8"
-          />
+          <div className="mb-8">
+            <VariableProximity
+              label="Alisha Mathias Portfolio"
+              containerRef={containerRef}
+              radius={120}
+              falloff="gaussian"
+              fromFontVariationSettings="'wght' 700, 'opsz' 16"
+              toFontVariationSettings="'wght' 1000, 'opsz' 32"
+              className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white"
+            />
+          </div>
 
           {/* Subheading */}
           <BlurText
             text="Third-year B.Tech CSE (Data Science) Student | Full-Stack Developer & Data Engineer"
-            delay={200}
+            delay={300}
             animateBy="words"
             direction="bottom"
-            stepDuration={0.5}
+            stepDuration={0.8}
             className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium mb-4"
           />
 
           {/* Description */}
           <BlurText
             text="Passionate about building scalable, user-friendly applications with the MERN stack and modern web technologies."
-            delay={150}
+            delay={200}
             animateBy="words"
             direction="top"
-            stepDuration={0.4}
+            stepDuration={0.6}
             className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed mb-6"
           />
 
