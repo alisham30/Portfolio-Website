@@ -35,20 +35,15 @@ const About = () => {
                   <span className="text-purple-500 dark:text-purple-400 font-semibold">
                     Dwarkadas J. Sanghvi College of Engineering
                   </span>{' '}
-                  with strong skills in full-stack web development and a passion for building scalable, 
-                  user-friendly applications.
+                  , passionate about building scalable applications and data-driven solutions. My core skills span full-stack web development with the MERN stack (MongoDB, Express.js, React, Node.js) and data engineering, where I have worked with PySpark, DuckDB, SQL, Docker, and Streamlit to design efficient data pipelines and analytics dashboards.
                 </p>
             
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              I have hands-on experience with the MERN stack (MongoDB, Express.js, React, Node.js), 
-              along with proficiency in Python, Java, SQL, and UI/UX design using Figma. Through 
-              projects like ShopEasy and Budgetix, I have gained practical experience in front-end 
-              design, back-end APIs, authentication, database management, and deployment workflows.
+              On the development side, I have built projects like ShopEasy, a full-stack e-commerce platform, and Budgetix, an AI-powered financial planner with Supabase integration. On the data side, I developed Nifty Stock Analysis, a Dockerized PySpark pipeline that processes NIFTY50 stock data, stores results in Parquet/CSV, and visualizes insights through an interactive dashboard.
             </p>
             
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-              Alongside technical skills, I bring strong teamwork, analytical thinking, and 
-              problem-solving abilities, which help me adapt quickly to new challenges.
+              Alongside my technical expertise, I bring strong problem-solving, teamwork, and analytical thinking skills, which help me adapt quickly to new challenges. I am eager to apply my combined knowledge of web development and data engineering in real-world projects, while continuously learning industry best practices to grow into a versatile engineer.
             </p>
           </motion.div>
         </div>
