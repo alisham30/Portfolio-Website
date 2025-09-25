@@ -1,0 +1,42 @@
+.text-type-container {
+  display: inline-block;
+  text-align: center;
+}
+
+.text-type-text {
+  display: inline-block;
+  font-family: inherit;
+  line-height: 1.2;
+}
+
+.text-type-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  font-weight: normal;
+  animation: none;
+  transition: opacity 0.1s ease;
+}
+
+.text-type-cursor.visible {
+  opacity: 1;
+}
+
+.text-type-cursor.hidden {
+  opacity: 0;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .text-type-text {
+    font-size: 0.8em;
+  }
+}
