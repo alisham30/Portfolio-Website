@@ -10,7 +10,7 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Programming",
-      skills: ["C", "Java", "Python", "JavaScript"]
+      skills: ["C", "Java", "Python", "JavaScript", "Scala", "Bash"]
     },
     {
       title: "Frontend",
@@ -22,15 +22,15 @@ const Skills = () => {
     },
     {
       title: "Databases/Storage",
-      skills: ["SQL", "MongoDB", "Supabase", "Parquet"]
+      skills: ["MySQL", "PostgreSQL", "IBM Db2", "SQL", "MongoDB", "Cassandra", "Supabase", "Cloudant"]
     },
     {
       title: "Data Eng/Big Data",
-      skills: ["PySpark", "Docker", "ETL", "Data Pipelines", "Jupyter"]
+      skills: ["PySpark", "Apache Spark (SQL, ML, Streaming)", "Hadoop", "ETL", "Data Pipelines", "Apache Airflow", "Kafka", "Jupyter", "Docker"]
     },
     {
       title: "Data Science",
-      skills: ["Data Analysis", "EDA", "Feature Engineering", "Predictive Modeling"]
+      skills: ["Data Analysis", "EDA", "Feature Engineering", "Predictive Modeling", "Machine Learning"]
     },
     {
       title: "Visualization/BI",
@@ -38,7 +38,7 @@ const Skills = () => {
     },
     {
       title: "Tools/Platforms",
-      skills: ["Git/GitHub", "Netlify", "Streamlit"]
+      skills: ["Git/GitHub", "Netlify", "Streamlit", "Azure (ADF, Databricks, Synapse, ADLS)", "AWS"]
     }
   ]
 
