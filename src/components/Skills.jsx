@@ -10,7 +10,7 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Programming",
-      skills: ["C", "Java", "Python", "JavaScript", "Scala", "Bash"]
+      skills: ["C", "Java", "Python", "JavaScript"]
     },
     {
       title: "Frontend",
@@ -26,7 +26,7 @@ const Skills = () => {
     },
     {
       title: "Data Eng/Big Data",
-      skills: ["PySpark", "Apache Spark (SQL, ML, Streaming)", "Hadoop", "ETL", "Data Pipelines", "Apache Airflow", "Kafka", "Jupyter", "Docker"]
+      skills: ["PySpark", " Spark ", "Hadoop", "ETL", "Data Pipelines",  "Jupyter", "Docker"]
     },
     {
       title: "Data Science",
@@ -38,7 +38,7 @@ const Skills = () => {
     },
     {
       title: "Tools/Platforms",
-      skills: ["Git/GitHub", "Netlify", "Streamlit", "Azure (ADF, Databricks, Synapse, ADLS)", "AWS"]
+      skills: ["Git/GitHub", "Netlify", "Streamlit", "AWS"]
     }
   ]
 
