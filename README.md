@@ -13,7 +13,6 @@
 
 ### 🔗 [alishamathiasportfoliowebsite.netlify.app](https://alishamathiasportfoliowebsite.netlify.app/)
 
-![Demo](./public/image.png)
 
 </div>
 
@@ -38,74 +37,6 @@
 - 📱 **Fully responsive** with mobile drawer and active-section tracking
 - ♿ **Touch-aware** — cursor & hover effects gracefully disable on mobile
 
-## 🚀 Quick Start
-
-```bash
-# clone
-git clone https://github.com/alisham30/Portfolio-Website.git
-cd Portfolio-Website
-
-# install
-npm install
-
-# develop → http://localhost:5173
-npm run dev
-
-# build for production
-npm run build
-
-# preview production build
-npm run preview
-```
-
-## 📂 Structure
-
-```
-src/
-├── components/
-│   ├── Hero.jsx              # Asymmetric Fraunces hero
-│   ├── About.jsx             # SectionHeader lives here
-│   ├── Experience.jsx        # DigiKendr timeline
-│   ├── Projects.jsx          # RepFlow, Sahaay, HERE Geospatial, ...
-│   ├── Skills.jsx
-│   ├── Certifications.jsx    # Featured HERE win + cert grid
-│   ├── Education.jsx
-│   ├── Contact.jsx
-│   ├── Navbar.jsx
-│   ├── Footer.jsx
-│   ├── LoadingScreen.jsx     # Fancy reveal sequence
-│   └── CustomCursor.jsx      # Lerp-tracked cursor
-├── App.jsx
-├── index.css                 # Cursor / aurora / glass utilities
-└── main.jsx
-```
-
-## 🎨 Customizing
-
-Each section's data lives at the top of its component as a plain array — no CMS needed.
-
-| Edit | File |
-|---|---|
-| Projects | `src/components/Projects.jsx` → `projects` |
-| Skills | `src/components/Skills.jsx` → `categories` |
-| Experience | `src/components/Experience.jsx` → `experiences` |
-| Achievements | `src/components/Certifications.jsx` → `featured`, `items` |
-| Education | `src/components/Education.jsx` → `educationData` |
-| Resume | replace `public/Alisha_Mathias_Resume.pdf` |
-| Palette | `tailwind.config.js` (primary / violet / teal / ink) |
-
-## 🛫 Deployment
-
-This portfolio is deployed on **[Netlify](https://www.netlify.com/)**.
-
-```bash
-npm run build
-# upload /dist  — or connect the repo:
-#   Build command: npm run build
-#   Publish dir:   dist
-```
-
-Also works out-of-the-box on **Vercel** (auto-detects Vite) and **GitHub Pages** (`gh-pages -d dist`).
 
 ## 📄 License
 
