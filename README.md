@@ -1,204 +1,189 @@
-# Alisha Mathias - Portfolio Website
+# Alisha Mathias — Portfolio
 
-A modern, responsive portfolio website built with React, Vite, Tailwind CSS, and Framer Motion. This portfolio showcases Alisha Mathias's projects, skills, achievements, and educational background.
+A cinematic, dark-mode portfolio website built with **React 18**, **Vite**, **Tailwind CSS**, and **Framer Motion** — featuring a custom cursor, an animated reveal loader, a Fraunces serif name treatment, and editorial numbered sections.
 
-## 🚀 Features
+> **Live:** [alishamathiasportfoliowebsite.netlify.app](https://alishamathiasportfoliowebsite.netlify.app/)
+> **Author:** Alisha Mathias · B.Tech CSE (Data Science), DJ Sanghvi College of Engineering
 
-- **Modern Design**: Clean, minimalist design with elegant animations
-- **Responsive**: Mobile-first design that works on all devices
-- **Dark/Light Mode**: Toggle between dark and light themes
-- **Smooth Animations**: Framer Motion animations for enhanced user experience
-- **Interactive Elements**: Hover effects, parallax scrolling, and smooth transitions
-- **Contact Form**: Functional contact form with validation
-- **Download Resume**: Direct download link for resume PDF
-- **SEO Optimized**: Meta tags and structured data for better search visibility
+---
 
-## 🛠️ Tech Stack
+## ✨ Highlights
 
-- **Frontend**: React 18
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Email**: EmailJS (for contact form)
-- **Deployment**: Netlify/Vercel ready
+- **Cinematic loader** — staggered letter reveal of the name with a live 0–100 counter, gradient progress bar, vertical edge accents, and a smooth wipe-up transition into the site.
+- **Custom cursor** — small mix-blend dot tracking the mouse precisely, paired with a lagging outer ring that grows on hover and shrinks on click. Auto-disabled on touch devices.
+- **Editorial typography** — name set in **Fraunces** (variable italic serif). Sections numbered `01 — 07` with gradient hairlines.
+- **Aurora theme** — deep midnight base with drifting blue → violet glow blobs, dot grid texture, and glassmorphism cards.
+- **Asymmetric hero** — oversized italic name, portrait card with corner crops, ghosted marquee text drifting in the background, vertical "Building → RepFlow" caption.
+- **Fully responsive** with mobile drawer navigation and active-section highlighting.
+- **Project showcase** with status badges (`Shipped` / `In Development` / `1st Runner-Up`), flagship markers, and gradient accent stripes.
+- **Working contact form** that opens the visitor's email client with a prefilled message.
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Tools |
+|---|---|
+| Framework | React 18, Vite 5 |
+| Styling | Tailwind CSS 3, custom CSS utilities, glassmorphism |
+| Animation | Framer Motion, custom `requestAnimationFrame` cursor |
+| Fonts | Fraunces (serif italic), Plus Jakarta Sans (display), Inter (body), Instrument Serif |
+| Icons | Lucide React |
+| Deployment | Netlify |
+
+---
 
 ## 📁 Project Structure
 
 ```
-portfolio/
+Portfolio-Website/
 ├── public/
-│   ├── Alisha_s_Resume.pdf
-│   └── vite.svg
+│   ├── Alisha_Mathias_Resume.pdf
+│   ├── final.jpg              # Hero portrait
+│   ├── here-win.jpg           # HERE Geospatial Hackathon win
+│   └── win.jpg                # CodeCraft UI/UX win
 ├── src/
 │   ├── components/
-│   │   ├── About.jsx
-│   │   ├── Certifications.jsx
+│   │   ├── About.jsx          # Includes the reusable SectionHeader
+│   │   ├── Certifications.jsx # Featured HERE win + grid of certs
 │   │   ├── Contact.jsx
+│   │   ├── CustomCursor.jsx   # Lerp-tracked cursor
 │   │   ├── Education.jsx
+│   │   ├── Experience.jsx     # DigiKendr timeline
 │   │   ├── Footer.jsx
-│   │   ├── Hero.jsx
-│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx           # Asymmetric Fraunces hero
+│   │   ├── LoadingScreen.jsx  # Fancy reveal sequence
+│   │   ├── Navbar.jsx         # Active-section underline
 │   │   ├── Projects.jsx
 │   │   ├── Skills.jsx
 │   │   └── ThemeProvider.jsx
 │   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
+│   ├── index.css              # Cursor styles, aurora, glass utils
+│   └── main.jsx
 ├── index.html
-├── package.json
-├── tailwind.config.js
+├── tailwind.config.js         # Blue/violet/teal palette
 ├── vite.config.js
-└── README.md
+└── package.json
 ```
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
+- **Node.js** ≥ 18
+- **npm** (or yarn / pnpm)
 
-- Node.js (version 16 or higher)
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd portfolio
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. **Start the development server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-4. **Open your browser**
-   Navigate to `http://localhost:5173` to view the portfolio.
-
-### Build for Production
+### Install & Run
 
 ```bash
+# Clone
+git clone https://github.com/alisham30/Portfolio-Website.git
+cd Portfolio-Website
+
+# Install
+npm install
+
+# Start dev server (http://localhost:5173)
+npm run dev
+
+# Production build
 npm run build
-# or
-yarn build
-```
 
-The built files will be in the `dist` directory.
-
-### Preview Production Build
-
-```bash
+# Preview the production build locally
 npm run preview
-# or
-yarn preview
 ```
-
-## 🎨 Customization
-
-### Colors and Themes
-
-The color scheme can be customized in `tailwind.config.js`:
-
-```javascript
-colors: {
-  primary: {
-    // Customize primary colors
-  },
-  accent: {
-    purple: '#8b5cf6',
-    pink: '#ec4899',
-    cyan: '#06b6d4',
-  }
-}
-```
-
-### Content Updates
-
-1. **Personal Information**: Update the content in each component file
-2. **Projects**: Modify the `projects` array in `src/components/Projects.jsx`
-3. **Skills**: Update the `skillCategories` array in `src/components/Skills.jsx`
-4. **Contact Info**: Change contact details in `src/components/Contact.jsx`
-5. **Resume**: Replace `public/Alisha_s_Resume.pdf` with your resume
-
-### Images
-
-- Replace the avatar in the Hero section with your photo
-- Add project screenshots to the Projects section
-- Update any other images as needed
-
-## 📱 Sections
-
-1. **Hero**: Introduction with photo and call-to-action buttons
-2. **About**: Bio and skills overview
-3. **Projects**: Featured projects with descriptions and links
-4. **Skills**: Technical skills with progress indicators
-5. **Certifications**: Achievements and certifications
-6. **Education**: Academic background and achievements
-7. **Contact**: Contact form and social links
-8. **Footer**: Quick links and additional information
-
-## 🚀 Deployment
-
-### Netlify
-
-1. Build the project: `npm run build`
-2. Drag and drop the `dist` folder to Netlify
-3. Configure custom domain if needed
-
-### Vercel
-
-1. Connect your GitHub repository to Vercel
-2. Vercel will automatically detect Vite and build the project
-3. Your site will be live at `https://your-project.vercel.app`
-
-### GitHub Pages
-
-1. Install gh-pages: `npm install --save-dev gh-pages`
-2. Add deploy script to package.json:
-   ```json
-   "scripts": {
-     "deploy": "gh-pages -d dist"
-   }
-   ```
-3. Run: `npm run build && npm run deploy`
-
-## 📧 Contact Form Setup
-
-To enable the contact form functionality:
-
-1. Sign up for EmailJS
-2. Create an email service
-3. Get your service ID, template ID, and public key
-4. Update the EmailJS configuration in the Contact component
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit changes: `git commit -m 'Add feature'`
-4. Push to branch: `git push origin feature-name`
-5. Submit a pull request
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 👨‍💻 Author
-
-**Alisha Mathias**
-- GitHub: [@alisham30](https://github.com/alisham30)
-- LinkedIn: [Alisha Mathias](https://linkedin.com/in/alisha-mathias)
-- Email: alisha.mathias@email.com
 
 ---
 
-⭐ If you found this portfolio helpful, please give it a star!
+## 📑 Sections
+
+| # | Section | Content |
+|---|---|---|
+| 00 | **Hero** | Fraunces italic name, status pill, achievement badges, portrait card |
+| 01 | **About** | Bio + four focus areas (Full-Stack, AI/CV, Data Eng, Cloud/DevOps) |
+| 02 | **Experience** | DigiKendr internship (Oct 2025 – Jan 2026) on a timeline |
+| 03 | **Projects** | RepFlow, Sahaay, HERE Geospatial, MLOps Login Anomaly, Who Lies Tonight, NIFTY |
+| 04 | **Skills** | Eight categories — Software, Backend, Data Eng, Cloud, DBs, AI/ML, Tools, BI |
+| 05 | **Achievements** | Featured HERE Hackathon win + IBM Data Eng cert, AWS Academy, etc. |
+| 06 | **Education** | DJ Sanghvi (CGPA 9.17) + HSC Maharashtra Board (82.33%) |
+| 07 | **Contact** | Email / phone / LinkedIn / GitHub + mailto form |
+
+---
+
+## 🎨 Customizing
+
+### Update content
+Each section's data lives at the top of its component as a plain array — no CMS needed:
+- **Projects:** `src/components/Projects.jsx` → `projects`
+- **Skills:** `src/components/Skills.jsx` → `categories`
+- **Experience:** `src/components/Experience.jsx` → `experiences`
+- **Achievements:** `src/components/Certifications.jsx` → `featured` + `items`
+- **Education:** `src/components/Education.jsx` → `educationData`
+
+### Theme & palette
+Tweak `tailwind.config.js` — the active palette is `primary` (blue), `violet`, `teal`, and a neutral `ink` ramp.
+
+### Resume
+Replace `public/Alisha_Mathias_Resume.pdf` with your own (keep the filename to avoid touching the download button).
+
+### Photos
+- `public/final.jpg` — hero portrait
+- `public/here-win.jpg` — featured award card
+- `public/win.jpg` — secondary achievement card
+
+### Custom cursor
+Tune lerp speed (`0.18`) and hover ring size in `src/components/CustomCursor.jsx` and `src/index.css` (`.cursor-ring.is-hover`).
+
+### Loading screen
+Adjust total duration (`duration = 2200`) and counter speed in `src/components/LoadingScreen.jsx`.
+
+---
+
+## 🛫 Deployment
+
+### Netlify (current)
+```bash
+npm run build
+# Drag /dist into Netlify, or connect the repo:
+#   Build command:  npm run build
+#   Publish dir:    dist
+```
+
+### Vercel
+Import the repo — Vercel auto-detects Vite. No config needed.
+
+### GitHub Pages
+```bash
+npm i -D gh-pages
+# package.json:
+#   "scripts": { "deploy": "gh-pages -d dist" }
+npm run build && npm run deploy
+```
+
+---
+
+## 🧠 Design Decisions
+
+- **Dark-only.** A developer/AI portfolio reads cleaner in a single dark aesthetic — the theme toggle was removed to keep visuals consistent.
+- **Serif name.** Fraunces italic at extreme display sizes gives the page personality without leaning on tired sans-serif tropes.
+- **No code/terminal vibes.** Avoids the cliché "developer in a console" look — the design feels editorial, like a fashion-magazine spread for engineering work.
+- **One real flagship.** Every project card is honest about whether it's shipped, in development, or an award winner — no fake demo links.
+
+---
+
+## 📜 License
+
+MIT — free to fork and adapt for your own portfolio. Please don't keep the personal copy or photos.
+
+---
+
+## 👋 Author
+
+**Alisha Mathias** · Mumbai, India
+- 🌐 [Portfolio](https://alishamathiasportfoliowebsite.netlify.app/)
+- 💼 [LinkedIn](https://www.linkedin.com/in/alisha-mathias-85a44427b)
+- 💻 [GitHub](https://github.com/alisham30)
+- ✉️ alishamathias05@gmail.com
+
+> ⭐ If this design inspired you, a star on the repo goes a long way.
