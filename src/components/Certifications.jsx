@@ -1,152 +1,214 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { ExternalLink } from 'lucide-react'
+import React, { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { ExternalLink, Trophy, Award, BadgeCheck, Medal, MapPin } from 'lucide-react'
+import { SectionHeader } from './About'
+
+const featured = {
+  title: '1st Runner-Up',
+  subtitle: 'HERE Mumbai Geospatial Student Hackathon 2026',
+  description:
+    'Built a stale-map detection & update pipeline cross-referencing OSM data with live signals from official datasets, business sites, and delivery platforms. Recognized among the top teams nationally.',
+  date: '2026',
+  image: '/here-win.jpg',
+  accent: 'from-amber-400 via-orange-400 to-rose-500',
+}
+
+const items = [
+  {
+    icon: BadgeCheck,
+    title: 'IBM Data Engineering — Professional Certificate',
+    subtitle: 'Coursera · IBM',
+    description:
+      'Full professional certificate — ETL pipelines, relational and NoSQL databases, big data, data warehouses, and orchestration.',
+    date: '2025',
+    certificate: 'https://www.coursera.org/account/accomplishments/professional-cert/',
+    accent: 'from-primary-400 to-cyan-400',
+  },
+  {
+    icon: Award,
+    title: 'AWS Academy — Cloud Architecting',
+    subtitle: 'Amazon Web Services',
+    description:
+      'Hands-on training in cloud infrastructure design using EC2, S3, IAM, and VPC — deployment, access control, and high-availability architectures.',
+    date: '2025',
+    certificate: 'https://www.credly.com/users/alisha-mathias',
+    accent: 'from-primary-500 to-violet-500',
+  },
+  {
+    icon: Award,
+    title: 'AWS Academy — Cloud Foundations',
+    subtitle: 'Amazon Web Services',
+    description:
+      'Foundational AWS training covering global infrastructure, core services, pricing, and the AWS Well-Architected Framework.',
+    date: '2025',
+    certificate: 'https://www.credly.com/users/alisha-mathias',
+    accent: 'from-cyan-400 to-primary-500',
+  },
+  {
+    icon: Medal,
+    title: 'Winner — CodeCraft UI/UX Hackathon',
+    subtitle: 'Frontend hackathon · 500+ participants',
+    description:
+      'Won the CodeCraft UI/UX Frontend Hackathon for design and front-end execution.',
+    date: '2025',
+    certificate: null,
+    accent: 'from-yellow-400 to-orange-500',
+    image: '/win.jpg',
+  },
+  {
+    icon: Award,
+    title: 'AWS Solutions Architecture — Virtual Experience',
+    subtitle: 'Forage · AWS',
+    description:
+      'Designed scalable hosting architectures and cloud solutions through AWS-authored simulations.',
+    date: 'Sep 2025',
+    certificate:
+      'https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/pmnMSL4QiQ9JCgE3W/kkE9HyeNcw6rwCRGw_pmnMSL4QiQ9JCgE3W_ZXp32rCsAvyKinw6C_1757245564745_completion_certificate.pdf',
+    accent: 'from-primary-500 to-cyan-500',
+  },
+  {
+    icon: Award,
+    title: 'Data Visualization — Tata Virtual Experience',
+    subtitle: 'Forage · Tata',
+    description:
+      'Empowering business with effective insights — framing scenarios, choosing visuals, and communicating findings.',
+    date: 'Aug 2025',
+    certificate:
+      'https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_ZXp32rCsAvyKinw6C_1756661395483_completion_certificate.pdf',
+    accent: 'from-emerald-400 to-teal-500',
+  },
+]
 
 const Certifications = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
-
-  const achievements = [
-    {
-      title: "Winner",
-      subtitle: "CodeCraft UI/UX Frontend Hackathon",
-      description: "Won the CodeCraft UI/UX Frontend Hackathon among 500+ participants, showcasing exceptional design and development skills",
-      date: "January 2025",
-      certificate: null,
-      color: "from-yellow-500 to-orange-500"
-    },
-    {
-      title: "Solutions Architecture",
-      subtitle: "AWS Virtual Experience Program",
-      description: "Completed AWS Solutions Architecture virtual internship, designing scalable hosting architectures and cloud solutions",
-      date: "September 2025",
-      certificate: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/pmnMSL4QiQ9JCgE3W/kkE9HyeNcw6rwCRGw_pmnMSL4QiQ9JCgE3W_ZXp32rCsAvyKinw6C_1757245564745_completion_certificate.pdf",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      title: "Data Visualization",
-      subtitle: "Tata Virtual Experience Program",
-      description: "Empowering Business with Effective Insights - completed practical tasks in framing business scenarios, choosing visuals, and communicating insights",
-      date: "August 2025",
-      certificate: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_ZXp32rCsAvyKinw6C_1756661395483_completion_certificate.pdf",
-      color: "from-green-500 to-teal-500"
-    },
-    {
-      title: "AWS Cloud Practitioner",
-      subtitle: "Certified Cloud Computing",
-      description: "Certified in foundational cloud computing concepts and AWS services",
-      date: "2024",
-      certificate: "https://media.licdn.com/dms/image/v2/D4D2DAQE48BIwG_wJXA/profile-treasury-document-cover-images_800/B4DZfMYA90HMBA-/0/1751480541668?e=1759431600&v=beta&t=Eg0Ay96IHe3FjfG65NH-Xiu5YH-4nUb2bLqPDJt67mg",
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      title: "Figma UI/UX Design",
-      subtitle: "Zero to Mastery",
-      description: "Certified in Figma UI/UX Design with 10+ interactive prototypes created",
-      date: "2024",
-      certificate: null,
-      color: "from-indigo-500 to-purple-500"
-    }
-  ]
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
-    <section id="certifications" ref={ref} className="py-20 bg-white dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
+    <section id="achievements" ref={ref} className="relative py-28 overflow-hidden">
+      <div className="absolute inset-0 dot-bg opacity-15 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(50% 50% at 80% 20%, rgba(245,158,11,0.08) 0%, transparent 70%)',
+        }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          num="05"
+          tag="Achievements"
+          title="Awards &"
+          highlight="recognition"
+          desc="Wins, certifications, and milestones along the way."
+          isInView={isInView}
+        />
+
+        {/* Featured: HERE Geospatial Win */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="surface surface-hover relative overflow-hidden mb-7"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Certifications & <span className="text-gradient">Achievements</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Recognition and certifications that showcase my commitment to continuous learning and excellence.
-          </p>
+          <div className={`absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-20 blur-3xl pointer-events-none bg-gradient-to-br ${featured.accent}`} />
+          <div className="relative grid lg:grid-cols-12 gap-0">
+            {/* Image */}
+            <div className="lg:col-span-5 relative overflow-hidden lg:rounded-l-3xl">
+              <div className="aspect-[4/5] lg:aspect-auto lg:h-full relative">
+                <img
+                  src={featured.image}
+                  alt="HERE Geospatial Hackathon Win"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/30 to-transparent lg:bg-gradient-to-r" />
+                <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-strong">
+                  <Trophy className="w-3.5 h-3.5 text-amber-300" />
+                  <span className="text-xs text-amber-100 font-medium">
+                    Hackathon Win
+                  </span>
+                </div>
+              </div>
+            </div>
+            {/* Content */}
+            <div className="lg:col-span-7 p-7 sm:p-10 flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 mb-4">
+                <span className={`px-3 py-1 rounded-full text-xs uppercase tracking-wider border border-amber-300/40 bg-amber-300/10 text-amber-200`}>
+                  Featured Award
+                </span>
+                <span className="text-xs text-ink-300 inline-flex items-center gap-1">
+                  <MapPin className="w-3 h-3" /> Mumbai · 2026
+                </span>
+              </div>
+              <h3 className="font-display text-3xl sm:text-4xl font-bold text-white leading-tight">
+                {featured.title}
+              </h3>
+              <p className="text-primary-300 font-medium mt-2 text-lg">
+                {featured.subtitle}
+              </p>
+              <p className="text-ink-200 leading-relaxed mt-4">
+                {featured.description}
+              </p>
+            </div>
+          </div>
         </motion.div>
 
-        <div className="space-y-8">
-          {achievements.map((achievement, index) => (
+        {/* Grid of remaining items */}
+        <div className="grid md:grid-cols-2 gap-5">
+          {items.map((item, i) => (
             <motion.div
-              key={index}
-              className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 dark:border-gray-700 group"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, y: -5 }}
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="surface surface-hover p-6 group"
             >
-              {/* Gradient Background Overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-r ${achievement.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-              
-              {/* Special styling for the winner card */}
-              {achievement.title === "Winner" && (
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-full -translate-y-16 translate-x-16 group-hover:scale-110 transition-transform duration-500"></div>
-              )}
-              
-              <div className="relative p-8">
-                <div className="flex items-start gap-6">
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-pink-500 transition-all duration-300">
-                          {achievement.title}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-400 text-base font-semibold mb-3">
-                          {achievement.subtitle}
-                        </p>
-                      </div>
-                      <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-full font-medium">
-                        {achievement.date}
-                      </span>
-                    </div>
-                    <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed mb-4">
-                      {achievement.description}
-                      {/* Special content for the winner - inline text */}
-                      {achievement.title === "Winner" && (
-                        <span className="block mt-2 text-sm font-medium text-yellow-600 dark:text-yellow-400">
-                          Among 500+ participants
-                        </span>
-                      )}
-                    </p>
-                    
-                    {achievement.certificate && (
-                      <motion.a
-                        href={achievement.certificate}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                        View Certificate
-                      </motion.a>
-                    )}
+              <div className="flex gap-4">
+                <div
+                  className={`shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${item.accent} flex items-center justify-center text-white shadow-glow`}
+                >
+                  <item.icon className="w-6 h-6" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-3 mb-1">
+                    <h3 className="font-display text-lg font-bold text-white leading-snug">
+                      {item.title}
+                    </h3>
+                    <span className="shrink-0 text-[11px] px-2.5 py-0.5 rounded-full border border-white/10 bg-white/5 text-ink-200">
+                      {item.date}
+                    </span>
                   </div>
-                  
-                  {/* Special content for the winner - small image on the side */}
-                  {achievement.title === "Winner" && (
-                    <div className="flex-shrink-0">
-                      <div className="relative w-24 h-24 rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src="/win.jpg" 
-                          alt="CodeCraft UI/UX Hackathon Win"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                      </div>
-                    </div>
+                  <p className="text-primary-300 text-sm font-medium mb-2">
+                    {item.subtitle}
+                  </p>
+                  <p className="text-ink-300 text-sm leading-relaxed mb-3">
+                    {item.description}
+                  </p>
+                  {item.certificate && (
+                    <a
+                      href={item.certificate}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-primary-300 hover:text-primary-100 transition-colors"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      View Certificate
+                    </a>
                   )}
                 </div>
+                {item.image && (
+                  <div className="hidden sm:block shrink-0 w-20 h-20 rounded-xl overflow-hidden border border-white/10">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   )

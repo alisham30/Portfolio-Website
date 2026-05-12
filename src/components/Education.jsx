@@ -1,135 +1,150 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { GraduationCap, BookOpen, Calendar, MapPin } from 'lucide-react'
+import React, { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { GraduationCap, MapPin, Calendar } from 'lucide-react'
+import { SectionHeader } from './About'
+
+const educationData = [
+  {
+    institution: "Dwarkadas J. Sanghvi College of Engineering",
+    degree: 'B.Tech in Computer Science Engineering (Data Science)',
+    affiliation: "SVKM's · University of Mumbai",
+    duration: 'Aug 2023 – Present',
+    location: 'Mumbai, India',
+    gpa: 'CGPA · 9.17 / 10',
+    status: 'current',
+    accent: 'from-primary-400 to-cyan-400',
+    notes: [
+      'Specializing in Data Science, AI/ML, and full-stack systems.',
+      'Active across hackathons and student technical communities.',
+    ],
+  },
+  {
+    institution: 'Maharashtra State Board',
+    degree: 'Higher Secondary Certificate (HSC) — Science',
+    affiliation: 'XI–XII',
+    duration: '2021 – 2023',
+    location: 'Mumbai, India',
+    gpa: '82.33 %',
+    status: 'completed',
+    accent: 'from-violet-400 to-primary-500',
+    notes: [
+      'Strong foundation in mathematics, physics, and computer science.',
+    ],
+  },
+]
+
+const stats = [
+  { v: '9.17', l: 'Current CGPA' },
+  { v: '82.33%', l: 'HSC Score' },
+  { v: '3+', l: 'Years of CS' },
+  { v: '2', l: 'Institutions' },
+]
 
 const Education = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
-
-  const educationData = [
-    {
-      institution: "Dwarkadas J. Sanghvi College of Engineering",
-      degree: "B.Tech in Computer Science & Engineering (Data Science)",
-      duration: "2021 - 2025",
-      location: "Mumbai, India",
-      gpa: "9.165/10",
-      status: "current",
-      color: "from-blue-500 to-cyan-500",
-      achievements: [
-        "Specialized in Data Science and Analytics",
-        "Strong foundation in Machine Learning and AI",
-        "Active participant in coding competitions",
-        "Member of Data Science club"
-      ]
-    },
-    {
-      institution: "St. Francis ICSE School",
-      degree: "Higher Secondary School Certificate (HSC)",
-      duration: "2019 - 2021",
-      location: "Mumbai, India",
-      gpa: "96.33%",
-      status: "completed",
-      color: "from-purple-500 to-pink-500",
-      achievements: [
-        "Outstanding academic performance",
-        "Active in extracurricular activities",
-        "Strong foundation in Mathematics and Science",
-        "Leadership roles in school events"
-      ]
-    }
-  ]
+  const isInView = useInView(ref, { once: true, amount: 0.15 })
 
   return (
-    <section id="education" ref={ref} className="py-20 bg-gray-50 dark:bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            My <span className="text-gradient">Education</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            My academic journey and educational achievements that have shaped my foundation in technology.
-          </p>
-        </motion.div>
+    <section id="education" ref={ref} className="relative py-28 overflow-hidden">
+      <div className="absolute inset-0 dot-bg opacity-15 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(50% 50% at 15% 70%, rgba(79,124,255,0.08) 0%, transparent 70%)',
+        }}
+      />
 
-        <div className="space-y-6">
-          {educationData.map((edu, index) => (
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          num="06"
+          tag="Education"
+          title="My"
+          highlight="academic journey"
+          desc="The classrooms that built my foundation."
+          isInView={isInView}
+        />
+
+        <div className="space-y-5">
+          {educationData.map((edu, i) => (
             <motion.div
-              key={index}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
+              key={edu.institution}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="surface surface-hover p-6 sm:p-7 group"
             >
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  <GraduationCap className="w-8 h-8 text-purple-500" />
+              <div className="flex flex-col sm:flex-row gap-5">
+                <div
+                  className={`shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${edu.accent} flex items-center justify-center text-white shadow-glow`}
+                >
+                  <GraduationCap className="w-7 h-7" />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      {edu.institution}
-                    </h3>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                      {edu.duration}
+                  <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
+                    <div>
+                      <h3 className="text-xl font-display font-bold text-white">
+                        {edu.institution}
+                      </h3>
+                      <p className="text-primary-300 text-sm font-medium mt-0.5">
+                        {edu.degree}
+                      </p>
+                      <p className="text-ink-400 text-xs mt-0.5">
+                        {edu.affiliation}
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start sm:items-end gap-1.5">
+                      <span
+                        className={`text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full border ${
+                          edu.status === 'current'
+                            ? 'border-emerald-300/30 bg-emerald-300/10 text-emerald-200'
+                            : 'border-white/10 bg-white/5 text-ink-300'
+                        }`}
+                      >
+                        {edu.status === 'current' ? 'In Progress' : 'Completed'}
+                      </span>
+                      <span className="text-xs text-ink-300 inline-flex items-center gap-1.5">
+                        <Calendar className="w-3 h-3" /> {edu.duration}
+                      </span>
+                      <span className="text-xs text-ink-300 inline-flex items-center gap-1.5">
+                        <MapPin className="w-3 h-3" /> {edu.location}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3 mt-3">
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/15 border border-primary-400/30 text-primary-100 text-sm font-medium">
+                      {edu.gpa}
                     </span>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
-                    {edu.degree}
-                  </p>
-                  <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                    <span><strong>GPA:</strong> {edu.gpa}</span>
-                    <span><strong>Location:</strong> {edu.location}</span>
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      edu.status === 'current' 
-                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
-                        : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
-                    }`}>
-                      {edu.status === 'current' ? 'Current' : 'Completed'}
-                    </span>
-                  </div>
+
+                  <ul className="mt-3 space-y-1.5">
+                    {edu.notes.map((n, idx) => (
+                      <li key={idx} className="text-ink-300 text-sm flex gap-2">
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary-400 shrink-0" />
+                        {n}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Education Stats */}
-        <motion.div 
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10"
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          {[
-            { number: "9.165/10", label: "Current GPA" },
-            { number: "96.33%", label: "HSC Score" },
-            { number: "4", label: "Years of Study" },
-            { number: "2", label: "Institutions" }
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              className="text-center bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-              transition={{ duration: 0.5, delay: 1 + (index * 0.1) }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-2xl font-bold text-purple-500 dark:text-purple-400 mb-2">
-                {stat.number}
+          {stats.map((s) => (
+            <div key={s.l} className="surface p-5 text-center">
+              <div className="text-3xl font-display font-bold text-gradient">{s.v}</div>
+              <div className="text-xs text-ink-300 mt-1 uppercase tracking-wider">
+                {s.l}
               </div>
-              <div className="text-gray-600 dark:text-gray-400 text-sm font-medium">
-                {stat.label}
-              </div>
-            </motion.div>
+            </div>
           ))}
         </motion.div>
       </div>

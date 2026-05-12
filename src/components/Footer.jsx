@@ -1,141 +1,120 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { Github, Linkedin, Mail, ArrowUp, Heart } from 'lucide-react'
+
+const quickLinks = [
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Contact', href: '#contact' },
+]
+
+const socialLinks = [
+  { icon: Github, href: 'https://github.com/alisham30', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/alisha-mathias-85a44427b', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:alishamathias05@gmail.com', label: 'Email' },
+]
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
-
-  const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' }
-  ]
-
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/alisham30", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/in/alisha-mathias", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:alisha.mathias@email.com", label: "Email" }
-  ]
-
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+  const scrollTo = (href) => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
 
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {/* Brand Section */}
-          <motion.div 
-            className="text-center md:text-left"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-bold text-gradient mb-4">Alisha Mathias</h3>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              B.Tech CSE (Data Science) Student | Aspiring Data Engineer & Full-Stack Developer
+    <footer className="relative border-t border-white/10 overflow-hidden">
+      <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(60% 50% at 50% 100%, rgba(79,124,255,0.10) 0%, transparent 70%)',
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid md:grid-cols-3 gap-10 mb-10">
+          <div>
+            <h3 className="font-display text-2xl font-bold text-gradient mb-3">
+              Alisha Mathias
+            </h3>
+            <p className="text-ink-300 leading-relaxed text-sm">
+              Software &amp; AI Developer · B.Tech CSE (Data Science) at DJ Sanghvi.
+              Building production systems with FastAPI, Next.js, and AWS.
             </p>
-            <div className="flex justify-center md:justify-start space-x-4">
-              {socialLinks.map((social, index) => (
+            <div className="flex gap-2 mt-5">
+              {socialLinks.map((s) => (
                 <motion.a
-                  key={index}
-                  href={social.href}
+                  key={s.label}
+                  href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 bg-gray-800 hover:bg-purple-600 rounded-lg transition-colors duration-200"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.9 }}
+                  aria-label={s.label}
+                  whileHover={{ y: -2 }}
+                  className="p-3 rounded-full glass text-ink-200 hover:text-white hover:bg-white/10 transition-colors"
                 >
-                  <social.icon className="w-5 h-5" />
+                  <s.icon className="w-4 h-4" />
                 </motion.a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Quick Links */}
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <motion.button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-gray-400 hover:text-purple-400 transition-colors duration-200"
-                    whileHover={{ x: 5 }}
+          <div>
+            <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">
+              Navigate
+            </h4>
+            <ul className="space-y-1.5">
+              {quickLinks.map((l) => (
+                <li key={l.name}>
+                  <button
+                    onClick={() => scrollTo(l.href)}
+                    className="text-ink-300 hover:text-primary-300 text-sm transition-colors"
                   >
-                    {link.name}
-                  </motion.button>
+                    {l.name}
+                  </button>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Contact Info */}
-          <motion.div 
-            className="text-center md:text-right"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h4 className="text-lg font-semibold mb-4">Get In Touch</h4>
-            <div className="space-y-2 text-gray-400">
-              <p>Mumbai, India</p>
-              <p>alisha.mathias@email.com</p>
-              <p>+91 98765 43210</p>
-            </div>
-          </motion.div>
+          <div>
+            <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">
+              Get in Touch
+            </h4>
+            <p className="text-ink-300 text-sm">Mumbai, India</p>
+            <a
+              href="mailto:alishamathias05@gmail.com"
+              className="block text-ink-300 hover:text-primary-300 text-sm transition-colors"
+            >
+              alishamathias05@gmail.com
+            </a>
+            <a
+              href="tel:+919821158848"
+              className="block text-ink-300 hover:text-primary-300 text-sm transition-colors"
+            >
+              +91 98211 58848
+            </a>
+          </div>
         </div>
 
-        {/* Bottom Section */}
-        <motion.div 
-          className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {currentYear} Alisha Mathias. All rights reserved.
+        <div className="pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-3">
+          <p className="text-ink-400 text-xs">
+            © {currentYear} Alisha Mathias · All rights reserved.
           </p>
-          
-          <motion.div 
-            className="flex items-center space-x-1 text-gray-400 text-sm"
-            whileHover={{ scale: 1.05 }}
-          >
-            <span>Made with</span>
-            <Heart className="w-4 h-4 text-red-500 fill-current" />
-            <span>using React & Tailwind CSS</span>
-          </motion.div>
-        </motion.div>
+          <p className="text-ink-400 text-xs inline-flex items-center gap-1.5">
+            Designed &amp; built with <Heart className="w-3 h-3 text-rose-400 fill-rose-400" /> using React + Tailwind.
+          </p>
+        </div>
       </div>
 
-      {/* Scroll to Top Button */}
       <motion.button
-        onClick={() => scrollToSection('#home')}
-        className="fixed bottom-8 right-8 p-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 z-50"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 1 }}
-        whileHover={{ scale: 1.1, y: -2 }}
-        whileTap={{ scale: 0.9 }}
+        onClick={() => scrollTo('#home')}
+        className="fixed bottom-6 right-6 p-3.5 rounded-full bg-gradient-to-br from-primary-500 to-violet-500 text-white shadow-glow hover:shadow-glow-lg z-40"
+        whileHover={{ y: -2, scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        aria-label="Back to top"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
+        <ArrowUp className="w-5 h-5" />
       </motion.button>
     </footer>
   )

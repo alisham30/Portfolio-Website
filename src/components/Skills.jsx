@@ -1,104 +1,116 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import React, { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import {
+  Code, Terminal, Server, Database, Cloud, GitBranch, BarChart3, Wrench,
+} from 'lucide-react'
+import { SectionHeader } from './About'
+
+const categories = [
+  {
+    icon: Code,
+    title: 'Software Development',
+    accent: 'from-primary-500 to-violet-500',
+    skills: ['Java', 'Python', 'JavaScript', 'TypeScript', 'React.js', 'Next.js', 'Tailwind', 'REST APIs'],
+  },
+  {
+    icon: Server,
+    title: 'Backend & Systems',
+    accent: 'from-primary-400 to-cyan-400',
+    skills: ['FastAPI', 'Node.js', 'Express.js', 'WebSockets', 'Flask'],
+  },
+  {
+    icon: BarChart3,
+    title: 'Data Engineering',
+    accent: 'from-teal-400 to-primary-500',
+    skills: ['SQL', 'PySpark', 'ETL Pipelines', 'Snowflake', 'Hadoop', 'Pandas', 'NumPy'],
+  },
+  {
+    icon: Cloud,
+    title: 'Cloud & DevOps',
+    accent: 'from-violet-500 to-primary-500',
+    skills: ['AWS EC2', 'AWS S3', 'Secrets Manager', 'Docker', 'Jenkins', 'GitHub Actions', 'Nginx', 'Linux'],
+  },
+  {
+    icon: Database,
+    title: 'Databases',
+    accent: 'from-primary-500 to-teal-400',
+    skills: ['PostgreSQL', 'Supabase', 'MySQL', 'MongoDB', 'IBM Db2', 'Cassandra'],
+  },
+  {
+    icon: Terminal,
+    title: 'AI / ML',
+    accent: 'from-violet-400 to-rose-400',
+    skills: ['OpenAI GPT-4o', 'Gemini API', 'TensorFlow.js', 'scikit-learn', 'CLIP', 'InsightFace', 'OpenCV'],
+  },
+  {
+    icon: Wrench,
+    title: 'Tools & Platforms',
+    accent: 'from-primary-400 to-violet-400',
+    skills: ['Git / GitHub', 'Selenium', 'Vercel', 'Netlify', 'Render', 'Streamlit', 'Figma'],
+  },
+  {
+    icon: GitBranch,
+    title: 'Visualization & BI',
+    accent: 'from-cyan-400 to-primary-500',
+    skills: ['Matplotlib', 'Seaborn', 'Recharts', 'Power BI', 'Tableau', 'Excel'],
+  },
+]
 
 const Skills = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
-
-  const skillCategories = [
-    {
-      title: "Programming",
-      skills: ["C", "Java", "Python", "JavaScript"]
-    },
-    {
-      title: "Frontend",
-      skills: ["HTML", "CSS", "Tailwind CSS", "React.js", "Figma (UI/UX)"]
-    },
-    {
-      title: "Backend",
-      skills: ["Node.js", "Express.js", "Flask"]
-    },
-    {
-      title: "Databases/Storage",
-      skills: ["MySQL", "PostgreSQL", "IBM Db2", "SQL", "MongoDB", "Cassandra", "Supabase", "Cloudant"]
-    },
-    {
-      title: "Data Eng/Big Data",
-      skills: ["PySpark", " Spark ", "Hadoop", "ETL", "Data Pipelines",  "Jupyter", "Docker"]
-    },
-    {
-      title: "Data Science",
-      skills: ["Data Analysis", "EDA", "Feature Engineering", "Predictive Modeling", "Machine Learning"]
-    },
-    {
-      title: "Visualization/BI",
-      skills: ["NumPy", "Pandas", "Matplotlib", "Seaborn", "Power BI", "Tableau", "Excel"]
-    },
-    {
-      title: "Tools/Platforms",
-      skills: ["Git/GitHub", "Netlify", "Streamlit", "AWS"]
-    }
-  ]
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
-    <section id="skills" ref={ref} className="py-20 bg-gray-50 dark:bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Skills & <span className="text-gradient">Technologies</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A comprehensive overview of my technical skills and expertise across different domains.
-          </p>
-        </motion.div>
+    <section id="skills" ref={ref} className="relative py-28 overflow-hidden">
+      <div className="absolute inset-0 dot-bg opacity-15 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(50% 60% at 10% 50%, rgba(139,92,246,0.08) 0%, transparent 70%)',
+        }}
+      />
 
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {skillCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={categoryIndex}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                whileHover={{ scale: 1.02, y: -5 }}
-              >
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                    {category.title}
-                  </h3>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          num="04"
+          tag="Tech Stack"
+          title="Tools I"
+          highlight="build with"
+          desc="The technologies I reach for, organized by what they do."
+          isInView={isInView}
+        />
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {categories.map((c, i) => (
+            <motion.div
+              key={c.title}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="surface surface-hover p-6"
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div
+                  className={`w-11 h-11 rounded-xl flex items-center justify-center bg-gradient-to-br ${c.accent} text-white shadow-glow`}
+                >
+                  <c.icon className="w-5 h-5" />
                 </div>
-                
-                <div className="space-y-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skillIndex}
-                      className="px-3 py-2 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg border border-purple-100 dark:border-purple-800/30"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                      transition={{ duration: 0.5, delay: (categoryIndex * 0.1) + (skillIndex * 0.05) }}
-                      whileHover={{ scale: 1.02, backgroundColor: "rgba(139, 92, 246, 0.1)" }}
-                    >
-                      <span className="text-gray-700 dark:text-gray-300 text-sm font-medium">
-                        {skill}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                <h3 className="font-display text-white font-semibold">{c.title}</h3>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {c.skills.map((s) => (
+                  <span
+                    key={s}
+                    className="text-xs px-2.5 py-1 rounded-full border border-white/10 bg-white/5 text-ink-200 hover:border-primary-400/40 hover:text-white transition-colors"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
-
       </div>
     </section>
   )
